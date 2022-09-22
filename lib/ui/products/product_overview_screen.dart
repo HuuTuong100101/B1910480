@@ -3,6 +3,8 @@ import 'package:myshop/models/product.dart';
 import 'package:myshop/ui/cart/cart_screen.dart';
 import 'products_grid.dart';
 import '../shared/app_drawer.dart';
+import '../cart/cart_manager.dart';
+import 'top_right_badge.dart';
 
 enum FilterOptions { favorites, all }
 
@@ -19,26 +21,29 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    appBar: AppBar(
-      title: const Text('MyShop'),
-      actions: <Widget>[
-        buildProductFilterMenu(),
-        buildShoppingCartIcon(),
-      ],
-    ),
-    drawer: const AppDrawer(),
-    body: ProductsGrid(_showOnlyFavorites),
+      appBar: AppBar(
+        title: const Text('MyShop'),
+        actions: <Widget>[
+          buildProductFilterMenu(),
+          buildShoppingCartIcon(),
+        ],
+      ),
+      drawer: const AppDrawer(),
+      body: ProductsGrid(_showOnlyFavorites),
     );
   }
 
   Widget buildShoppingCartIcon() {
-    return IconButton(
-      icon: const Icon(
-        Icons.shopping_cart,
+    return TopRightBadge(
+      data: CartManager().productsCount,
+      child: IconButton(
+        icon: const Icon(
+          Icons.shopping_cart,
+        ),
+        onPressed: () {
+          Navigator.of(context).pushNamed(CartScreen.routeName);
+        },
       ),
-      onPressed: () {
-        Navigator.of(context).pushNamed(CartScreen.routeName);
-      },
     );
   }
 

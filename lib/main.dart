@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
           return MaterialPageRoute(
             builder: (ctx) {
               return ProductDetailScreen(
-                ProductsManager().findById(productId),
+                ProductsManager().findById(productId)
               );
             },
           );
