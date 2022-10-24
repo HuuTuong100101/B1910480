@@ -6,7 +6,7 @@ import '../../models/product.dart';
 
 class ProductsManager with ChangeNotifier {
   List<Product> _items = [];
-  
+
   final ProductsService _productsService;
 
   ProductsManager([AuthToken? authToken])

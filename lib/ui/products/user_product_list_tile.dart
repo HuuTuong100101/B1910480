@@ -29,7 +29,7 @@ class UserProductListTile extends StatelessWidget {
       ),
     );
   }
-
+  
   Widget buildDeleteButton(BuildContext context) {
     return IconButton(
       icon: const Icon(Icons.delete),

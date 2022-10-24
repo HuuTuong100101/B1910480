@@ -9,7 +9,7 @@ class ProductsService extends FirebaseService {
 
   Future<List<Product>> fetchProducts([bool filterByUser = false]) async {
     final List<Product> products = [];
-    
+
     try {
       final filters =
           filterByUser ? 'orderBy = "creatorId"&equalTo="$userId"' : '';
