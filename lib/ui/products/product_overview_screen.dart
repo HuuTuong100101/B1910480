@@ -42,7 +42,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
           future: _fetchProducts,
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.done) {
-              return ValueListenableBuilder(
+              return ValueListenableBuilder<bool>(
                   valueListenable: _showOnlyFavorites,
                   builder: (context, onlyFavorites, child) {
                     return ProductsGrid(onlyFavorites);

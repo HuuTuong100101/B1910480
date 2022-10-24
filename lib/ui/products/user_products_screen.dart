@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'user_product_list_tile.dart';
 import 'products_manager.dart';
 import '../shared/app_drawer.dart';
+
 import 'package:provider/provider.dart';
 import 'edit_product_screen.dart';
 
@@ -10,12 +11,11 @@ class UserProductsScreen extends StatelessWidget {
   const UserProductsScreen({super.key});
 
   Future<void> _refreshProducts(BuildContext context) async {
-    await context.read<ProductsManager>().fetchProducts(true);
+    await context.read<ProductsManager>().fetchProducts();
   }
 
   @override
   Widget build(BuildContext context) {
-    final productsManager = ProductsManager();
     return Scaffold(
       appBar: AppBar(
         title: const Text('Your Products'),
@@ -26,7 +26,7 @@ class UserProductsScreen extends StatelessWidget {
       drawer: const AppDrawer(),
       body: FutureBuilder(
           future: _refreshProducts(context),
-          builder: (context, snapshot) {
+          builder: (ctx, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(
                 child: CircularProgressIndicator(),
@@ -34,13 +34,13 @@ class UserProductsScreen extends StatelessWidget {
             }
             return RefreshIndicator(
               onRefresh: () => _refreshProducts(context),
-              child: buildUserProductListView(productsManager),
+              child: buildUserProductListView(),
             );
           }),
     );
   }
 
-  Widget buildUserProductListView(ProductsManager productsManager) {
+  Widget buildUserProductListView() {
     return Consumer<ProductsManager>(
       builder: (ctx, productsManager, child) {
         return ListView.builder(
