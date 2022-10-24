@@ -18,7 +18,7 @@ abstract class FirebaseService {
     _token = authToken?.token;
     _userId = authToken?.userId;
   }
-
+  
   @protected
   String? get token => _token;
 

@@ -1,10 +1,7 @@
 import 'dart:convert';
-
 import 'package:http/http.dart' as http;
-
 import '../models/product.dart';
 import '../models/auth_token.dart';
-
 import 'firebase_service.dart';
 
 class ProductsService extends FirebaseService {

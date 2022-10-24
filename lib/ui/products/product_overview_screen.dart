@@ -54,7 +54,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
           }),
     );
   }
-
+  
   Widget buildShoppingCartIcon() {
     return Consumer<CartManager>(builder: (ctx, cartManager, child) {
       return TopRightBadge(

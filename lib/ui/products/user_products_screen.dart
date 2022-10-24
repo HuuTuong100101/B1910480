@@ -57,7 +57,7 @@ class UserProductsScreen extends StatelessWidget {
       },
     );
   }
-
+  
   Widget buildAddButton(BuildContext context) {
     return IconButton(
       icon: const Icon(Icons.add),
