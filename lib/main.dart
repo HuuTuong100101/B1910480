@@ -53,7 +53,6 @@ class MyApp extends StatelessWidget {
                   secondary: Colors.deepOrange,
                 ),
               ),
-              // home: const ProductsOverviewScreen(),
               home: authManager.isAuth
                 ? const ProductsOverviewScreen()
                 : FutureBuilder(
